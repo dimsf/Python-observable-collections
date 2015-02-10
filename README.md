@@ -15,7 +15,7 @@ In order to be notified for a data change in an observable collection you call t
 from observablelist import ObservableList
 
 def handler(event):
-	print 'An event occured'
+	print 'Event: ' + event.action + ' occurred'
 
 observableList = ObservableList()
 observableList.attach(handler)
@@ -35,8 +35,8 @@ In itemsUpdated and itemsRemoved an array is passed in event.items containing th
 
 In itemsUpdated event, arrays event.newItems and event.oldItems are passed representing the new and old items.
 
-An ObservableList example
--------------------------
+Example
+-------
 
 ```Python
 from observablelist import ObservableList
