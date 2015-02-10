@@ -1,5 +1,25 @@
 # Python-observable-collections
-This is an implementation of observable collections for Python, in order to attach handlers to be notified when change in the underlying data occurs. Currently ObservableSet, ObservableList and ObservableDict are supported.
+
+Introduction
+------------
+This is an implementation of observable collections for Python, which allows attaching handlers to Python collections in order to be notified when change in the underlying data occurs. Currently ObservableSet, ObservableList and ObservableDict are supported. 
+
+All three collecitons raise a custom event object containing an action string and one or more item arrays depending on the action.
+
+Usage
+-----
+
+In order to be notified for a data change in an observable collection you call the attach method.
+
+```Python
+from observablelist import ObservableList
+
+def handler(event):
+	print 'An event occured'
+
+observableList = ObservableList()
+observableList.attach(handler)
+```
 
 An ObservableList example
 -------------------------
