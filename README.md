@@ -26,17 +26,14 @@ Every collection emit an event containing a name, and one or more item arrays de
 
 List events
 -----------
-The list emit 3 different events with event action name as:
-* itemsAdded
-* itemsUpdated
-* itemsRemoved
 
-In itemsUpdated and itemsRemoved an array is passed in event.items containing the items added/removed along with the event.index containing the index here the items added/removed.
+The list emit 3 different events along with the parameters are:
+* event.name = 'itemsAdded', event.items, event.index
+* event.name = 'itemsUpdated', event.newItems, event.oldItems, event.index
+* event.name = 'itemsRemoved', event.items, event.index
 
-In itemsUpdated event, arrays event.newItems and event.oldItems are passed representing the new and old items.
-
-Example
--------
+List event example
+------------------
 
 ```Python
 from observablelist import ObservableList
@@ -60,3 +57,6 @@ myList[0:4:2] = [50,51]
 del myList[1]
 myList.reverse()
 ```
+
+
+
