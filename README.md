@@ -21,6 +21,20 @@ observableList = ObservableList()
 observableList.attach(handler)
 ```
 
+# Event objects
+Every collection emit an event containing a name, and one or more item arrays depending on the event.
+
+List events
+-----------
+The list emit 3 different events with event action name as:
+* itemsAdded
+* itemsUpdated
+* itemsRemoved
+
+In itemsUpdated and itemsRemoved an array is passed in event.items containing the items added/removed along with the event.index containing the index here the items added/removed.
+
+In itemsUpdated event, arrays event.newItems and event.oldItems are passed representing the new and old items.
+
 An ObservableList example
 -------------------------
 
