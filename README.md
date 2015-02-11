@@ -24,16 +24,16 @@ observableList.attach(handler)
 # Event objects
 Every collection emit an event containing a name, and one or more item arrays depending on the event.
 
-List events
------------
+ObservableList
+--------------
 
 The list emit 3 different events along with the parameters are:
-* event.name = 'itemsAdded', event.items, event.index
+* event.name = 'itemsAdded', event.items , event.index
 * event.name = 'itemsUpdated', event.newItems, event.oldItems, event.index
 * event.name = 'itemsRemoved', event.items, event.index
 
-List event example
-------------------
+ObservableList event example
+----------------------------
 
 ```Python
 from observablelist import ObservableList
@@ -58,5 +58,37 @@ del myList[1]
 myList.reverse()
 ```
 
+ObservableDict
+--------------
 
+ObservableDict emits two different events:
+* event.name = 'itemsAdded', event.items
+* event.name = 'itemsChanged', event.items
+* event.name = 'itemsRemoved', event.items
 
+The items arrays contains named tuples with the following fields:
+* key
+* value
+* oldValue(only for itemsUpdatedEvent)
+
+ObservableDict example
+----------------------
+
+```Python
+from observabledict import ObservableDict
+
+def dictHandler(event):
+	if event.action == 'itemsUpdated':
+		print 'The following items has been updated'
+		
+		for item in event.items:
+			print 'Key: ' + str(item.key) + ', value: ' + str(item.value) + ', old Value: ' + str(item.oldValue)
+```
+
+In case of itemsAdded/itemsRemoved events the item.oldValue does not exists
+
+ObservableSet
+-------------
+
+ObservableSet emits the same events as ObservableList with the exception that no index is included in the event object
+since the set is no-ordered collection. The rest stays the same.
